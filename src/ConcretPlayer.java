@@ -11,6 +11,7 @@ public class ConcretPlayer extends Player {
 
 	public ConcretPlayer(int chip, TableCanvas tableCanvas, int playerNumber) {
 		super(tableCanvas, playerNumber);
+		this.chip = chip;
 	}
 
 	/**

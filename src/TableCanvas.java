@@ -1,34 +1,22 @@
 import java.awt.*;
-import java.util.LinkedList;
-/**
- * implement of Table to display
- * @author chenxiao
- *
- */
-public class TableCanvas extends Canvas {
+import java.util.*;
 
-	// whether the dealer's second is Hidden
-	private boolean dealersSecondFaceDown;
+class TableCanvas extends Canvas {
+	private boolean dealersSecondFaceDown; // whether the dealer's second is
+											// upside down
+	private int numPlayers; // the number of players
+	private Image cardBack; // the image of the back of a card
+	private LinkedList<LinkedList<Card>> allCards; // a linked list of linked
+													// lists of cards
+	// used to store all the cards for display
 
-	// the image of the back of a card
-	private Image cardBack;
+	private Image offscreen; // an offscreen image for double buffering to avoid
+								// flickering
+	private Dimension offscreensize; // the size of the offscreen image
+	private Graphics g2; // the graphics for the offscreen image
 
-	// a linked list of linked lists of cards to store all the cards for display
-	private LinkedList<LinkedList<Card>> allCards;
-
-	// the number of players
-	private int numPlayers;
-
-	// an offscreen image for double buffering to avoid flickering
-	private Image offscreen;
-
-	// the size of the offscreen image
-	private Dimension offscreensize;
-
-	// the graphics for the offscreen image
-	private Graphics g2;
-
-	// create a new TableCanvas and pass it the image of the back of a card
+	// create a new TableCanvas with the specified number of players
+	// and pass it the image of the back of a card
 	public TableCanvas(int numPlayers, Image cardBack) {
 		this.numPlayers = numPlayers;
 		allCards = new LinkedList<LinkedList<Card>>();
@@ -37,7 +25,8 @@ public class TableCanvas extends Canvas {
 		this.cardBack = cardBack;
 	}
 
-	// this is called when window is uncovered or resized the same as update
+	// this is called when window is uncovered or resized
+	// the same as update
 	public void paint(Graphics g) {
 		update(g);
 	}

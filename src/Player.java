@@ -44,7 +44,7 @@ public abstract class Player {
 	}
 
 	// returns whether the player is busted
-	public boolean isBusted() {
+	public boolean isBurst() {
 		return (this.getHandSum() > 21);
 	}
 
@@ -52,7 +52,7 @@ public abstract class Player {
 	 * Empty the cards in hand
 	 */
 	public void EmptyHand() {
-		hand.clear();
+		hand = new ArrayList<Card>();
 	}
 
 	/**
